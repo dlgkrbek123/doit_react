@@ -1,0 +1,24 @@
+=>를 이용해서 함수를 선언
+
+함수에 typeof 연산자 실행시
+"function" 이 연산됨 
+
+function add(first, second) {
+  return first + second
+}
+// 함수명 있음
+
+var add = function(first, second) {
+  return first + second
+}
+// 함수명 없음 ( 익명 함수를 변수에 할당 )
+
+------------------------------------
+
+화살표 함수는 익명 함수 방식과 유사하다.
+간결한 표기법
+this가 자신이 선언된 환경의 this를 따른다.
+
+var add = (first, second) => {
+  return first + second
+}

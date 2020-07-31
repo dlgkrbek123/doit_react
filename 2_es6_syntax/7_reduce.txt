@@ -1,0 +1,9 @@
+reduce는 실무에서 자료형을 변환하는데 많이 쓰인다.
+
+[] => 숫자
+[] => {}
+
+items.reduce((result, item) => {
+  result[item.key] = item.value 
+  return result
+}, {})
