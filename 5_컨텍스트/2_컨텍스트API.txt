@@ -1,0 +1,18 @@
+const MyContext = React.createContext(defaultValue)
+const { Provider, Consumer } = MyContext
+
+상위 컴포넌트에서 value로 context의 값을
+제어한다. 주로 상위 컴포넌트의 state로 관리하고
+내부에 setState를 하는 함수를 넣는다.
+
+  const context = {
+    loading: this.state.loading,
+    setLoading: (loading) => setState(loading)
+  }
+
+  <Provider value={context}>
+    <Toolbar />
+  </Provider>
+
+하위 컴포넌트 에서 
+  const { loading, setLoading } = useContext(MyContext)
