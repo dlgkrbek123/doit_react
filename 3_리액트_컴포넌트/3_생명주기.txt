@@ -1,0 +1,26 @@
+컴포넌트의 생성 => 소멸까지의 과정
+
+생명주기 함수를 이용해 특정시점에
+원하는 동작을 구현
+
+생명주기 함수들은 리액트가 호출
+개발자가 호출x
+
+생성단계
+  생성시 단 한 번만 호출됨
+
+- constructor
+- getDerivedStateFromProps
+- render
+- componentDidMount
+
+갱신과정
+  state나 props의 변화시에 진행
+
+- shouldComponentUpdate
+  갱신과정의 다음 과정을 진행할지 결정
+  가상 dom을 리렌더할지 결정
+- render
+- componentDidUpdate
+
+componentWillUnmount

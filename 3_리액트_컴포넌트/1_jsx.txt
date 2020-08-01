@@ -1,0 +1,13 @@
+jsx
+- javascript xml
+- 자바스크립트에 xml을 추가한 확장형 문법
+- 하나의 파일에 js와 html을 동시 작성
+
+render함수는 react element를 반환
+jsx는 react element를 반환하는 
+함수이다. ( React.createElemet를 호출 )
+
+jsx 안쓰면 document.createElement와
+dom1.append(dom2)를 많이 써야 한다.
+
+

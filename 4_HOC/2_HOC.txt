@@ -1,0 +1,70 @@
+상속 패턴
+- 공통기능은 부모로부터 물려받고 추가기능만 
+  override 및 구현
+- 중복 코드를 줄인다.
+
+상속 패턴의 단점
+- 새 클래스를 만들기 싫어서
+- 기존 클래스를 확장하려면
+
+- 불필요한 기능까지 상속받을 가능성
+- 다른 클래스의 상속 구조에도 영향
+- 상속이 깊어져서 파악이 어렵다.
+
+--------------------------------
+
+기존의 구조를 해치지 않으면서 
+원하는 기능만 상속받고 싶다.
+
+데코레이터 패턴
+- 클래스의 종속이 아닌 기능의 공유
+- 기능을 더해주는 커링을 활용해서
+- 각 컴포넌트에 기능만을 추가
+
+HOC => 컴포넌트를 리턴하는 함수
+
+const hoc(Component) => {
+  return ({props}) => {
+    return <Component {...props} />
+  }
+}
+
+const hoc(Component) => {
+  return class extends React.Component {
+    render() {
+      return <Component {...this.props} />
+    }
+  }
+}
+
+HOC는 with으로 시작한다.
+
+----------------------------------------
+
+component.displayName이란 속성을 이용해
+디버깅시 보이는 이름을 결정가능하다.
+
+----------------------------------------
+
+const withLoading =  (loadingMessage = "로딩 중") => (WrappedComponent) => {
+  const { displayName, name : componentName } = WrappedComponent
+  const WrappedComponentNmae = displayName || componentName
+
+  const WithLoading = ({ isLoading, ...otherProps }) => {
+    if(isLoading) return loadingMessage
+
+    return <WrappedComponent {...otherProps} />
+  }
+
+  WithLoading.displayName = `withLoading(${WrappedComponentNmae})`
+  return WithLoading
+}
+
+
+--------------------------------------------------------------------------
+
+다중 HOC
+ HOC는 구조상 서로 조합될 수 있다.
+
+  PagewithLoadData = withLoadData(Page)
+  PageWithLoadDataAndLoading = compose(withLoadData, withLoading("서버 요청 중 "))(Page)

@@ -1,0 +1,50 @@
+커링이란
+- 함수를 리턴하는 함수
+- 중복된 코드를 재입력하지 않고
+- 조합해서 사용 ( 재활용 )
+- 인자를 넘기는 단계를 나눌 수 있다.
+
+const multiply = (a, b) => {
+  return a * b
+}
+
+const multiplyTwo = (a) => {
+  return multiply(a, 2)
+}
+
+const multiplyX = (x) => {
+  return (a) => {
+    return multiply(a, x)
+  }
+}
+
+const multiplyThree = multiplyX(3)
+result = multiplyThree(5) // 15
+
+multiplyX(4)(5) // 20
+
+----------------------------------
+
+커링은 HOC의 기반이 된다.
+함수의 인자를 재구성해서 필요한 함수를
+팩토링 하는 패턴
+
+const formula = x => addFour(multiplyThree(multiplyTwo(x)))
+// 코드의 실행이 오른쪽에서 왼쪽으로 실행된다. 이해하기 어려움
+
+커링함수를 순서대로 조합해보자
+
+const compose = (funcArray) => {
+  return funcArray.reduce((prevFunc, nextFunc) => {
+    return (...args) => {
+      return nextFunc(prevFunc(...args))
+    }
+  }, k => k)
+}
+
+----------------------------------------------------------
+
+arguments는 함수에서 접근가능한 특수변수로 전달된 모든 인자 목록을
+유사 배열에 저장하고 있다.
+
+Array.prototype.slice.call(arguments) // arguments를 배열로 변환
