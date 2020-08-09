@@ -18,7 +18,7 @@ const createModalProvider = (ContentMap = {}) => {
       });
     }, []);
     const handleClose = useCallback(() => {
-      this.setState({ showModal: false });
+      setState({ showModal: false });
     }, []);
 
     return (

@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 export const FormContext = React.createContext({});
 
-const FormProvider = ({ children, initValues, validate, onSubmit }) => {
+const FormProvider = ({ children, initValues = {}, validate, onSubmit }) => {
   const [state, setState] = useState({
     values: initValues,
     errors: {},

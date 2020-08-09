@@ -18,6 +18,7 @@
     "react-with-styles": "^4.1.0",
     "recompose": "^0.30.0",
     "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
     "redux-pack": "^0.1.5",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
@@ -28,7 +29,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "mockserver": "json-server --watch --delay 500 --port 4000 mock/db.json"
   },
   "eslintConfig": {
     "extends": "react-app"

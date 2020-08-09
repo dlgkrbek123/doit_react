@@ -1,0 +1,6 @@
+axios에 config라는 것이 있다.
+
+baseURL,
+headers
+params
+responseType

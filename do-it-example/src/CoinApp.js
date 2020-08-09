@@ -1,19 +1,26 @@
 import React from "react";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import { Provider } from "react-redux";
+import configureStore from "./store/configureStore";
 import AppLayout from "./components/AppLayout";
 import theme from "./Theme";
 import MainPage from "./components/main/MainPage";
+import ModalProvider from "./ModalProvider";
+
+const store = configureStore();
 
 const CoinApp = () => {
   return (
-    <>
+    <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Global />
-        <AppLayout>
-          <MainPage />
-        </AppLayout>
+        <ModalProvider>
+          <Global />
+          <AppLayout>
+            <MainPage />
+          </AppLayout>
+        </ModalProvider>
       </ThemeProvider>
-    </>
+    </Provider>
   );
 };
 

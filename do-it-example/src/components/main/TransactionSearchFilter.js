@@ -1,18 +1,24 @@
-import React, { useContext, useCallback } from "react";
+import React, { useCallback } from "react";
 import InlineList from "../common/InlineList";
 import Button from "../common/Button";
 import Text from "../common/Text";
 import Input from "../common/Input";
 import Form, { FormContext } from "../common/Form";
 import Select, { Option } from "../common/Select";
+import Api from "../../Api";
+import useTransaction from "../../hooks/useTransaction";
 
-const TransactionSearchFilter = ({ initValues, setFilter }) => {
+const TransactionSearchFilter = ({ initValues }) => {
+  const { setTransactionList } = useTransaction();
+
   const handleSubmit = useCallback((values) => {
-    console.log(values);
+    Api.get("/transactions", { params: values }).then((response) => {
+      setTransactionList(response.data);
+    });
   }, []);
 
   return (
-    <Form onSubmit={handleSubmit} initValues={initValues}>
+    <Form onSubmit={handleSubmit}>
       <FormContext.Consumer>
         {({ onChange, values }) => {
           return (

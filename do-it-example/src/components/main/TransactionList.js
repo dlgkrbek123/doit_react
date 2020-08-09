@@ -1,22 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Api from "../../Api";
 import Heading from "../common/Heading";
 import Card from "../common/Card";
-import TransactionTable from "./TransactionTable";
 import TransactionSearchFilter from "./TransactionSearchFilter";
+import TransactionTable from "./TransactionTable";
+import useTransaction from "../../hooks/useTransaction";
 
 const TransactionList = () => {
-  const [state, setState] = useState({
-    transactions: [
-      {
-        id: "btx_01",
-        name: "비트코인(BTX)",
-        totalPrice: "123,123,000,000원",
-        currentPrice: "4,200,000원",
-        datetime: "2019/01/20 08:23:22",
-      },
-    ],
-  });
-  const { transactions } = state;
+  const { transactions, setTransactionList } = useTransaction();
+  useEffect(() => {
+    Api.get("/transactions", {
+      params: { code: "BTX" },
+    }).then((response) => {
+      setTransactionList(response.data);
+    });
+  }, []);
 
   return (
     <div>
