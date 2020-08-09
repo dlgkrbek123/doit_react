@@ -6,6 +6,7 @@ import AppLayout from "./components/AppLayout";
 import theme from "./Theme";
 import MainPage from "./components/main/MainPage";
 import ModalProvider from "./ModalProvider";
+import Notification from "./components/main/Notification";
 
 const store = configureStore();
 
@@ -17,6 +18,7 @@ const CoinApp = () => {
           <Global />
           <AppLayout>
             <MainPage />
+            <Notification />
           </AppLayout>
         </ModalProvider>
       </ThemeProvider>

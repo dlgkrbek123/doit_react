@@ -6,7 +6,7 @@ import Text from "./Text";
 const Toast = ({ message, warning }) => {
   return (
     <Overlay>
-      <div className={`message-wrapper ${waring ? "warning" : ""}`}>
+      <div className={`message-wrapper ${warning ? "warning" : ""}`}>
         <Spacing>
           <Text inverse bold>
             {message}
@@ -34,7 +34,7 @@ const Overlay = styled.div`
     margin-bottom: ${({ theme }) => theme.unit * 4}px;
   }
 
-  & .message-wrapper.warning: {
+  & .message-wrapper.warning {
     background: ${({ theme }) => theme.color.error};
   }
 `;

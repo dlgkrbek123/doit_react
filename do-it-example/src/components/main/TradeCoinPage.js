@@ -6,10 +6,12 @@ import Button from "../common/Button";
 import InlineList from "../common/InlineList";
 import Form, { FormContext } from "../common/Form";
 import ModalContext from "../common/Modal/context";
-import Api from "../../Api";
+import useTransaction from "../../hooks/useTransaction";
 
 const TradeCoinPage = ({ name, code, price, type, loading }) => {
   const typeName = type === "sell" ? "판매" : "구매";
+  const { createTransaction } = useTransaction();
+
   const handleSubmit = useCallback(
     (values, closeModal) => {
       const formValues = {
@@ -17,7 +19,8 @@ const TradeCoinPage = ({ name, code, price, type, loading }) => {
         code,
         name,
       };
-      Api.post("/transactions", formValues).then(() => closeModal());
+
+      createTransaction(formValues, closeModal);
     },
     [name, code]
   );

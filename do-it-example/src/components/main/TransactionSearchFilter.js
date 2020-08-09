@@ -5,16 +5,22 @@ import Text from "../common/Text";
 import Input from "../common/Input";
 import Form, { FormContext } from "../common/Form";
 import Select, { Option } from "../common/Select";
-import Api from "../../Api";
 import useTransaction from "../../hooks/useTransaction";
 
 const TransactionSearchFilter = ({ initValues }) => {
-  const { setTransactionList } = useTransaction();
+  const { requestTransactionList } = useTransaction();
 
   const handleSubmit = useCallback((values) => {
-    Api.get("/transactions", { params: values }).then((response) => {
-      setTransactionList(response.data);
-    });
+    const cleanedParams = Object.entries(values)
+      .filter(([key, value]) => value !== "")
+      .reduce((obj, [key, value]) => {
+        return {
+          ...obj,
+          [key]: value,
+        };
+      }, {});
+
+    requestTransactionList(cleanedParams);
   }, []);
 
   return (

@@ -26,6 +26,42 @@
       "amount": "5",
       "name": "두잇코인",
       "id": 4
+    },
+    {
+      "currentPrice": "216,000원",
+      "amount": "10",
+      "name": "이더리움",
+      "id": 5
+    },
+    {
+      "currentPrice": "25,000원",
+      "amount": "10",
+      "name": "두잇코인",
+      "id": 6
+    },
+    {
+      "currentPrice": "25,000원",
+      "amount": "100",
+      "name": "두잇코인",
+      "id": 7
+    },
+    {
+      "currentPrice": "25,000원",
+      "amount": "10",
+      "name": "두잇코인",
+      "id": 8
+    },
+    {
+      "currentPrice": "216,000원",
+      "amount": "10",
+      "name": "이더리움",
+      "id": 9
+    },
+    {
+      "currentPrice": "25,000원",
+      "amount": "5",
+      "name": "두잇코인",
+      "id": 10
     }
   ]
 }

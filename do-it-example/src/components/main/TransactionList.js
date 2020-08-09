@@ -7,13 +7,9 @@ import TransactionTable from "./TransactionTable";
 import useTransaction from "../../hooks/useTransaction";
 
 const TransactionList = () => {
-  const { transactions, setTransactionList } = useTransaction();
+  const { transactions, loading, requestTransactionList } = useTransaction();
   useEffect(() => {
-    Api.get("/transactions", {
-      params: { code: "BTX" },
-    }).then((response) => {
-      setTransactionList(response.data);
-    });
+    requestTransactionList();
   }, []);
 
   return (
@@ -29,7 +25,7 @@ const TransactionList = () => {
         />
       </Card>
       <Card>
-        <TransactionTable transactions={transactions} />
+        <TransactionTable transactions={transactions} isLoading={loading} />
       </Card>
     </div>
   );
